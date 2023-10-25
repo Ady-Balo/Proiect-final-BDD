@@ -19,12 +19,12 @@ class LoginPage(HomePage):
         self.browser.get(self.URL)
 
     def introduce_username(self):
-        self.browser.find_element(*self.USER_LOC).send_keys("tesztelek7")
+        self.browser.find_element(*self.USER_LOC).send_keys("testelek1")
         # dupa prima rulare cu comanda <behave> din terminal trebuie schimbata <email>-ul in caz de fail
         # daca nu schimbam o sa avem eroarea "Email already exist!" si nu putem continua registrarea ca "New user!"
 
     def introduce_email(self):
-        self.browser.find_element(*self.EMAIL_LOC).send_keys("tesztelek7@email.com")
+        self.browser.find_element(*self.EMAIL_LOC).send_keys("testelek1@email.com")
 
     def click_on_signup(self):
         self.browser.find_element(*self.SIGNUP_BUTTON_LOC).click()
