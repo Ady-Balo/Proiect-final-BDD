@@ -1,9 +1,10 @@
 from selenium.webdriver.common.by import By
 
+from pages.base_page import BasePage
 from pages.home_page import HomePage
 
 
-class CartPage(HomePage):
+class CartPage(HomePage, BasePage):
     URL="https://automationexercise.com/view_cart"
     CART_LOC=(By.CSS_SELECTOR, "a[href='/view_cart']")
     FOOTER_LOC=(By.CSS_SELECTOR, "#footer")
@@ -14,7 +15,7 @@ class CartPage(HomePage):
     QUANTITY_LOC=(By.CSS_SELECTOR, ".disabled")
 
     def click_on_cart_button(self):
-        self.browser.find_element(*self.CART_LOC)
+        self.click(self.CART_LOC)
 
     def navigate_to_footer(self):
         self.browser.find_element(*self.FOOTER_LOC)
@@ -23,7 +24,7 @@ class CartPage(HomePage):
         self.browser.find_element(*self.SUBSCR_TEXT).is_displayed()
 
     def enter_email_and_click_on_arrow_button(self):
-        self.browser.find_element(*self.SUBSCR_EMAIL).send_keys("mernl@email.com")
+        self.fill_text(self.SUBSCR_EMAIL, "mernl@email.com")
         self.browser.find_element(*self.SUBSCR_ARROW).submit()
 
     def verify_successfully_message(self):

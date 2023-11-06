@@ -1,7 +1,7 @@
 from behave import *
 
 
-# all the step_impl methods for the signup feature -> signup_page)
+# all the step_impl methods for the signup feature -> signup_page
 
 @given("I am on the signup page")
 def step_impl(context):
@@ -60,5 +60,3 @@ def step_impl(context):
 @then("I click the 'Delete Account' button")
 def step_impl(context):
     context.signup_page.click_on_delete_account()
-
-

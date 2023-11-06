@@ -4,6 +4,6 @@ pip install behave-html-formatter
 pip install -r requirements.txt
 
 run test:
-    behave -f html -o behave-report.html --tags=test
+behave -f html -o behave-report.html --tags=test
 SAU
-    behave -f html -o behave-ini-report.html
+behave -f html -o behave-ini-report.html

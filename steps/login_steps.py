@@ -1,11 +1,12 @@
 from behave import *
 
+
 # given!, when!, and, but, then! - sintaxa gherkin
 # given - seteaza situatia initiala
 # when - pasii din test
 # then - verificarea din test
 
-#new user signup
+# new user signup
 
 @when("Click on 'Signup / Login ' button")
 def step_impl(context):
@@ -27,10 +28,10 @@ def step_impl(context):
     context.login_page.navigate_to_login()
 
 
-@when("I enter a valid username and a valid email address")
-def step_impl(context):
-    context.login_page.introduce_username()
-    context.login_page.introduce_email()
+@when("I enter a valid {username} and a valid {email}")
+def step_impl(context, username, email):
+    context.login_page.introduce_username(username)
+    context.login_page.introduce_email(email)
 
 
 @step("I click Signup")
@@ -40,11 +41,40 @@ def step_impl(context):
 
 @then("'ENTER ACCOUNT INFORMATION' is visible")
 def step_impl(context):
-    list_tc=context.signup_page.return_enter_account()
+    account_info=context.signup_page.return_enter_account()
     expected_text='ENTER ACCOUNT INFORMATION'
-    for element in list_tc:
+
+    for element in account_info:
         if element.text == expected_text and element.is_displayed():
-            print("ENTER ACCOUNT INFORMATION' is visible")
+            print("'ENTER ACCOUNT INFORMATION' is visible")
 
 
+@when('I enter correct email address')
+def step_impl(context):
+    context.login_page.enter_email()
 
+
+@step('I enter correct password')
+def step_impl(context):
+    context.login_page.enter_password()
+
+
+@when("I click 'login' button")
+def step_impl(context):
+    context.login_page.click_on_login()
+
+
+@step("Verify that Logged in as username is visible")
+def step_impl(context):
+    context.login_page.verify_username()
+
+
+@when("Click Logout button")
+def step_impl(context):
+    context.login_page.click_on_logout()
+
+
+@then("Verify that user is navigated to login page")
+def step_impl(context):
+    context.login_page.verify_login_page()
+    return context

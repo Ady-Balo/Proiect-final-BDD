@@ -1,7 +1,7 @@
 from behave import *
 
 
-@when('I click the Man  button')
+@when("I click the Man  button")
 def step_impl(context):
     context.products_page.click_on_man_button()
 
@@ -30,3 +30,26 @@ def step_impl(context):
 @then("I find the quantity button and click to modify")
 def step_impl(context):
     context.products_page.click_on_quantity_button()
+    context.products_page.enter_quantity()
+
+
+@step("I verify user is navigated to ALL PRODUCTS page successfully")
+def step_impl(context):
+    context.products_page.scroll_down()
+    context.products_page.scroll_up()
+
+
+@when("I enter product name in search input and click search button")
+def step_impl(context):
+    context.products_page.enter_product_name()
+    context.products_page.click_on_search_button()
+
+
+@step("I verify 'SEARCHED PRODUCTS' is visible")
+def step_impl(context):
+    context.products_page.verify_searched_products()
+
+
+@then("I verify all the products related to search are visible")
+def step_impl(context):
+    context.products_page.verify_all_searched_products()

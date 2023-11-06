@@ -6,7 +6,11 @@ from pages.invalid_login_page import InvalidLoginPage
 from pages.login_page import LoginPage
 from pages.products_page import ProductsPage
 from pages.signup_page import SignUpPage
-from pages.tetcase_page import TestCasePage
+from pages.verify_testcase_page import TestCasePage
+from pages.base_page import BasePage
+
+
+
 
 
 def before_all(context):
@@ -16,12 +20,12 @@ def before_all(context):
 
     context.browser=Browser()
     context.home_page=HomePage()
-    # context.base_page = Basepage()
+    context.base_page = BasePage()
     context.login_page=LoginPage()
     context.signup_page=SignUpPage()
     context.invalid_login_page=InvalidLoginPage()
     context.cart_page=CartPage()
-    context.testcase_page=TestCasePage()
+    context.verify_testcase_page=TestCasePage()
     context.contact_us_page=ContactUsPage()
     context.products_page=ProductsPage()
 

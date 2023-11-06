@@ -1,9 +1,10 @@
 from selenium.webdriver.common.by import By
 
+from pages.base_page import BasePage
 from pages.home_page import HomePage
 
 
-class SignUpPage(HomePage):
+class SignUpPage(HomePage, BasePage):
     URL="https://automationexercise.com/signup"
     ENTER_ACCOUNT=(By.CSS_SELECTOR, "login-form > .text-center.title > b")
     TITLE_LOC=(By.CSS_SELECTOR, "#id_gender1")
@@ -31,15 +32,15 @@ class SignUpPage(HomePage):
         return self.browser.find_elements(*self.ENTER_ACCOUNT)
 
     def fill_title(self):
-        self.browser.find_element(*self.TITLE_LOC).click()
+        self.click(self.TITLE_LOC)
 
     def fill_password(self):
-        self.browser.find_element(*self.PASS_LOC).send_keys("test1234")
+        self.fill_text(self.PASS_LOC, "test1234")
 
     def fill_data_birth(self):
-        self.browser.find_element(*self.DAY_LOC).click()
-        self.browser.find_element(*self.MONTH_LOC).click()
-        self.browser.find_element(*self.YEAR_LOC).click()
+        self.click(self.DAY_LOC)
+        self.click(self.MONTH_LOC)
+        self.click(self.YEAR_LOC)
 
     def selecting_checkbox1(self):
         self.browser.find_element(*self.NEWSLETTER_LOC).click()
@@ -48,28 +49,28 @@ class SignUpPage(HomePage):
         self.browser.find_element(*self.RECEIVE_LOC).click()
 
     def introduce_first_name(self):
-        self.browser.find_element(*self.FIRST_NAME_LOC).send_keys("User")
+        self.fill_text(self.FIRST_NAME_LOC, "User")
 
     def introduce_last_name(self):
-        self.browser.find_element(*self.LAST_NAME_LOC).send_keys("Tester")
+        self.fill_text(self.LAST_NAME_LOC, "Tester")
 
     def introduce_address(self):
-        self.browser.find_element(*self.ADDRESS_LOC).send_keys("123 Street,Nr.2")
+        self.fill_text(self.ADDRESS_LOC, "123 Street,Nr.2")
 
     def introduce_country(self):
         self.browser.find_element(*self.COUNTRY_LOC)
 
     def introduce_state(self):
-        self.browser.find_element(*self.STATE_LOC).send_keys("New York")
+        self.fill_text(self.STATE_LOC, "New York")
 
     def introduce_city(self):
-        self.browser.find_element(*self.CITY_LOC).send_keys("New York City")
+        self.fill_text(self.CITY_LOC, "New York City")
 
     def introduce_zipcode(self):
-        self.browser.find_element(*self.ZIPCODE_LOC).send_keys("10001")
+        self.fill_text(self.ZIPCODE_LOC, "10001")
 
     def introduce_mobile_number(self):
-        self.browser.find_element(*self.MOBILE_LOC).send_keys("1234567890")
+        self.fill_text(self.MOBILE_LOC, "1234567890")
 
     def click_on_create_account(self):
         self.browser.find_element(*self.CR_ACCOUNT_LOC).submit()
@@ -78,10 +79,10 @@ class SignUpPage(HomePage):
         self.browser.find_element(*self.VR_ACCOUNT).is_displayed()
 
     def click_on_continue_button(self):
-        self.browser.find_element(*self.CONTINUE_LOC).click()
+        self.click(self.CONTINUE_LOC)
 
     def verify_logged_in_username(self):
         self.browser.find_element(*self.LOGGED_IN_USER).is_displayed()
 
     def click_on_delete_account(self):
-        self.browser.find_element(*self.DELETE_ACCOUNT).click()
+        self.click(self.DELETE_ACCOUNT)
